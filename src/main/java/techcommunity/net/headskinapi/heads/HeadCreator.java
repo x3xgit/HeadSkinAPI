@@ -22,7 +22,7 @@ public class HeadCreator {
     private String texture;
 
     private HeadCreator() {
-        new HeadCreator(new ItemStack(Material.PLAYER_HEAD, 1));
+        this(new ItemStack(Material.PLAYER_HEAD, 1));
     }
 
     private HeadCreator(ItemStack head) {
@@ -92,12 +92,14 @@ public class HeadCreator {
         if (headMeta != null)
         {
             if (name != null)
-                headMeta.setDisplayName(name);
+                headMeta.setDisplayName(Colors.color(name));
             if (lore != null) {
                 lore = lore.stream().map(Colors::color).collect(Collectors.toList());
                 headMeta.setLore(lore);
             }
         }
+
+        head.setItemMeta(headMeta);
 
         return head;
     }
