@@ -35,7 +35,10 @@ public class HeadCreator {
     }
 
     public static HeadCreator edit(ItemStack head) {
-        return new HeadCreator(head);
+        if (head.getType() == Material.PLAYER_HEAD)
+            return new HeadCreator(head);
+        
+        return new HeadCreator();
     }
 
     public HeadCreator setTexture(String texture) {
